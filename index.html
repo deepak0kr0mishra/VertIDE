@@ -1,11 +1,63 @@
 <!DOCTYPE html>
+
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>vertIDE</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-    
+
+
+<body class="bg-zinc-950 text-white">
+
+    <header class="h-14 flex items-center px-6 border-b border-zinc-800">
+
+        <h1 class="font-bold tracking-widest">
+            VertIDE
+        </h1>
+
+        <button
+            id="runButton"
+            class="ml-auto px-4 py-2 bg-zinc-800 rounded hover:bg-zinc-700"
+        >
+            ▶ Run
+        </button>
+        <button
+            id="clrButton"
+            class="ml-auto px-4 py-2 bg-zinc-800 rounded hover:bg-zinc-700" 
+        >
+            Clear
+        </button>
+
+    </header>
+
+
+    <main class="p-6">
+
+        <h2 class="text-zinc-400 mb-3">
+            Editor
+        </h2>
+
+        <div
+            id="editor"
+            class="h-64 p-4 bg-zinc-900 border border-zinc-800 rounded font-mono"
+        >
+            Hello Forge
+        </div>
+
+    </main>
+
+
+    <script src="script.js"></script>
+
 </body>
+
 </html>
