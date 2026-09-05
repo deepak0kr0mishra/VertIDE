@@ -45,18 +45,19 @@
         <h2 class="text-zinc-400 mb-3">
             Editor
         </h2>
-
-        <div
-            id="editor"
-            class="h-64 p-4 bg-zinc-900 border border-zinc-800 rounded font-mono"
-        >
-            Hello Forge
-        </div>
-
+        <div id="editor"></div>
+        <iframe id="preview" class="w-full h-96 bg-white rounded"></iframe>
+        
     </main>
 
-
-    <script src="script.js"></script>
+    <script type="importmap">{
+    "imports": {
+        "codemirror": "https://esm.sh/codemirror",
+        "@codemirror/lang-html": "https://esm.sh/@codemirror/lang-html"
+        }
+    }
+    </script>
+    <script  type="module" src="script.js"></script>
 
 </body>
 
