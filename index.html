@@ -5,10 +5,7 @@
 <head>
     <meta charset="UTF-8">
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>vertIDE</title>
 
@@ -24,16 +21,10 @@
             VertIDE
         </h1>
 
-        <button
-            id="runButton"
-            class="ml-auto px-4 py-2 bg-zinc-800 rounded hover:bg-zinc-700"
-        >
+        <button id="runButton" class="ml-auto px-4 py-2 bg-zinc-800 rounded hover:bg-zinc-700">
             ▶ Run
         </button>
-        <button
-            id="clrButton"
-            class="ml-auto px-4 py-2 bg-zinc-800 rounded hover:bg-zinc-700" 
-        >
+        <button id="clrButton" class="ml-auto px-4 py-2 bg-zinc-800 rounded hover:bg-zinc-700">
             Clear
         </button>
 
@@ -47,7 +38,10 @@
         </h2>
         <div id="editor"></div>
         <iframe id="preview" class="w-full h-96 bg-white rounded"></iframe>
-        
+
+        <h2 class="text-zinc-400 mt-6 mb-3">Console</h2>
+        <div id="console" 
+            class="bg-black border border-zinc-800 rounded h-40 overflow-auto "></div>
     </main>
 
     <script type="importmap">{
@@ -57,7 +51,7 @@
         }
     }
     </script>
-    <script  type="module" src="script.js"></script>
+    <script type="module" src="script.js"></script>
 
 </body>
 
