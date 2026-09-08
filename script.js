@@ -5,9 +5,19 @@ const runButton = document.querySelector("#runButton");
 const clrButton = document.querySelector("#clrButton");
 const preview = document.querySelector("#preview");
 const consoleBox = document.querySelector("#console");
+const fileTabs = document.querySelectorAll(".file-tab");
+
+const files = {
+    "index.html" : "<h1>Hello coder</h1>",
+    "style.css" : "h1 {color :red; }",
+    "script.js" : 'console.log("Code working ");'
+}
+
+let currentFile = "index.html";
+
 
 const editor = new EditorView({
-    doc: "<h1>Hello VertIDE</h1>",
+    doc: files[currentFile],
 
     extensions: [
         basicSetup,
@@ -15,6 +25,25 @@ const editor = new EditorView({
     ],
 
     parent: document.querySelector("#editor")
+});
+
+fileTabs.forEach(function(tab){
+    tab.addEventListener("click" , function(){
+
+        //save the file
+        files[currentFile] = editor.state.doc.toString();
+        const fileName = tab.dataset.file;
+
+        currentFile = fileName;
+
+        editor.dispatch({
+            changes :{
+                from :0 ,
+                to :editor.state.doc.length,
+                insert : files[currentFile]
+            }
+        });
+    });
 });
 
 runButton.addEventListener("click", function () {
@@ -45,7 +74,8 @@ clrButton.addEventListener("click", function () {
             to: editor.state.doc.length,// give the length of editor (total no of char in it )
             insert: ""
         }
-    })
+    });
+    files[currentFile] = "";
     // console.log("Clr button clicked"); 
 });
 
