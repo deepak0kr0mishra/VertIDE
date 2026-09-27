@@ -41,11 +41,17 @@
             <button class="file-tab px-3 py-2 bg-zinc-800 rounded" data-file="style.css">style.css</button>
             <button class="file-tab px-3 py-2 bg-zinc-800 rounded" data-file="script.js">script.js</button>
         </div>
-        <div id="editor"></div>
-        <iframe id="preview" class="w-full h-96 bg-white rounded"></iframe>
 
+        <div class="flex gap-4 w-full">
+            <div class="w-1/2" id="editor"></div>
+
+    
+            <div class="w-1/2">
+                <iframe id="preview" class="w-full h-96 bg-white rounded"></iframe>
+            </div>
+        </div>
         <h2 class="text-zinc-400 mt-6 mb-3 bg-zinc-700/30 rounded  p-1">Console</h2>
-        <div id="console" class="bg-black border border-zinc-800 rounded h-40 overflow-auto p-2"></div>
+        <div id="console" class="bg-black border border-zinc-800 rounded h-40 overflow-auto p-2"></div>  
     </main>
 
     <script type="importmap">{
