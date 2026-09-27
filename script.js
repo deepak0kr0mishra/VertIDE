@@ -8,9 +8,9 @@ const consoleBox = document.querySelector("#console");
 const fileTabs = document.querySelectorAll(".file-tab");
 
 const files = {
-    "index.html" : "<h1>Hello coder</h1>",
-    "style.css" : "h1 {color :red; }",
-    "script.js" : 'console.log("Code working ");'
+    "index.html": "<h1>Hello coder</h1>",
+    "style.css": "h1 {color :red; }",
+    "script.js": 'console.log("Code working ");'
 }
 
 let currentFile = "index.html";
@@ -27,8 +27,8 @@ const editor = new EditorView({
     parent: document.querySelector("#editor")
 });
 
-fileTabs.forEach(function(tab){
-    tab.addEventListener("click" , function(){
+fileTabs.forEach(function (tab) {
+    tab.addEventListener("click", function () {
 
         //save the file
         files[currentFile] = editor.state.doc.toString();
@@ -37,34 +37,54 @@ fileTabs.forEach(function(tab){
         currentFile = fileName;
 
         editor.dispatch({
-            changes :{
-                from :0 ,
-                to :editor.state.doc.length,
-                insert : files[currentFile]
+            changes: {
+                from: 0,
+                to: editor.state.doc.length,
+                insert: files[currentFile]
             }
         });
     });
 });
 
-runButton.addEventListener("click", function () {
-    const code = editor.state.doc.toString();
+function buildPreview() {
+    const htmlCode = files["index.html"];
+    const cssCode = files["style.css"];
+    const jsCode = files["script.js"];
 
-    const consoleCode = `
+    const combineCode = `
+        <style>
+            ${cssCode}
+        </style>
+
+        ${htmlCode}
+
         <script>
             const originalLog = console.log;
-            
-            //overriding/intercepting we are taking any console log and storing it to our object 
+
             console.log = function (message) {
                 window.parent.postMessage({
-                    type : "console" ,
-                    message : message
-                } , "*");
-                originalLog(message);
-            }
-        <\/script>
+                    type: "console",
+                    message: String(message)
+                }, "*");
 
+                originalLog(message);
+            };
+
+            ${jsCode}
+        <\/script>
     `;
-    preview.srcdoc = consoleCode + code;
+
+    return combineCode;
+}
+
+runButton.addEventListener("click", function () {
+    files[currentFile] = editor.state.doc.toString();
+
+    consoleBox.textContent = "";
+
+    const finalCode = buildPreview();
+
+    preview.srcdoc = finalCode;
 });
 
 clrButton.addEventListener("click", function () {
@@ -84,3 +104,4 @@ window.addEventListener("message", function (event) {
         consoleBox.textContent += `${event.data.message} \n`;
     }
 })
+

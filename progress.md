@@ -26,3 +26,4 @@ it get stored to the variable
 - Problem : Clear button only clears the code in the editor not that been stored in the object 
 - Solution : I made it clear the whole object each time clear button been pressed 
 
+# Day 07 
