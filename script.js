@@ -71,7 +71,7 @@ function buildPreview() {
             };
 
             ${jsCode}
-        <\\/script>
+        <\/script>
     `;
 
     return combineCode;
@@ -101,7 +101,7 @@ clrButton.addEventListener("click", function () {
 
 window.addEventListener("message", function (event) {
     if (event.data.type === "console") {
-        consoleBox.textContent += `${event.data.message} \\n`;
+        consoleBox.textContent += `${event.data.message} \n`;
     }
 })
 
