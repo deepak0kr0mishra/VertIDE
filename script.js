@@ -11,8 +11,7 @@ const fileTabs = document.querySelectorAll(".file-tab");
 const files = {
     "index.html": "<h1>Hello coder</h1>",
     "style.css": "h1 { color: red; }",
-    "script.js": `const name = await input("Enter your name: ");
-console.log("Hello, " + name + "!");`
+    "script.js": `(async () => {\n    const name = await input("Enter your name: ");\n    console.log("Hello, " + name + "!");\n})();`
 };
 
 let currentFile = "index.html";
